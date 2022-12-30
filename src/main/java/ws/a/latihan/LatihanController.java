@@ -8,6 +8,7 @@ package ws.a.latihan;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,15 +31,18 @@ public class LatihanController {
     //private static Map<String, Barang> actrl = new HashMap<>();
     
     
-    @RequestMapping(value = "/getNama/{Id}")
-    public String getNama(@PathVariable("Id") int Id){
-        try{
+    @RequestMapping(value = "/getDataBarang")
+    public List<Barang> getBarang(){
+        
+        return actrl.findBarangEntities();
+        
+        /*try{
             data = actrl.findBarang(Id);
             return data.getId()+ "  " + data.getNama()+ " = " + data.getJumlah();
         }
         catch(Exception error){
             return "Data Barang Tidak Ditemukan";     
-        }
+        }*/
     }
      @RequestMapping(value = "/delete/{Id}")
      public String delNama(@PathVariable("Id") int Id){
